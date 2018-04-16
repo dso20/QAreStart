@@ -58,8 +58,8 @@ namespace DemoWebApp.Tests
             _loanConfirmationPage =_loanApplicationPage.Submit();
         }
         
-        [Then(@"I go to the loan completed page displaying my name")]
-        public void ThenIGoToTheLoanCompletedPageDisplayingMyName()
+        [Then(@"I go to the loan completed page displaying my name (.*)")]
+        public void ThenIGoToTheLoanCompletedPageDisplayingMyName(string name)
         {
             Assert.That(_loanConfirmationPage.FirstName,Is.EqualTo(_firstName));
         }
