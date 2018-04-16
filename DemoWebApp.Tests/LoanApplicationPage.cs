@@ -12,13 +12,14 @@ namespace DemoWebApp.Tests
 {
     class LoanApplicationPage
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
         private const string PageUri = @"http://localhost:40077/Home/StartLoanApplication";
 
 
         public LoanApplicationPage(IWebDriver driver)
         {
             _driver = driver;
+            PageFactory.InitElements(_driver, this);
         }
 
         public static LoanApplicationPage NavigateTo(IWebDriver driver)
@@ -30,29 +31,20 @@ namespace DemoWebApp.Tests
         }
 
         [FindsBy(How = How.Id, Using = "FirstName")]
+        private IWebElement _firstName;
         public string FirstName
         {
-            get
-            {
-                return _driver.FindElement(By.Id("FirstName")).Text;
-            }
-            set 
-            {
-                _driver.FindElement(By.Id("FirstName")).SendKeys(value);
-            }
+            set => _firstName.SendKeys(value);
         }
 
+        [FindsBy(How = How.Id, Using = "LastName")]
+        private IWebElement _lastName;
         public string Surname
         {
-            get
-            {
-                return _driver.FindElement(By.Id("LastName")).Text;
-            }
-            set
-            {
-                _driver.FindElement(By.Id("LastName")).SendKeys(value);
-            }
+            set => _lastName.SendKeys(value);
+
         }
+
 
         public void SetLoan()
         {

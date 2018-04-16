@@ -10,7 +10,7 @@ namespace DemoWebApp.Tests
     public class LoanApplicationSteps
     {
 
-        private IWebDriver _driver = new ChromeDriver(@"C:\Users\dowen\AppData\Local\Google\Chrome\Application\");
+        private IWebDriver _driver;
    
         private LoanApplicationPage _loanApplicationPage;
         private LoanConfirmationPage _loanConfirmationPage;
@@ -21,6 +21,9 @@ namespace DemoWebApp.Tests
         [Given(@"I navigate to Loan page")]
         public void GivenINavigateToLoanPage()
         {
+            _driver = new ChromeDriver(@"C:\Users\dowen\AppData\Local\Google\Chrome\Application\");
+            _driver.Manage().Window.Maximize();
+
             _loanApplicationPage = LoanApplicationPage.NavigateTo(_driver);
         }
         
