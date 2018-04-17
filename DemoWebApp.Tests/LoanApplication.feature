@@ -15,5 +15,5 @@ Scenario: Loan application is submitted without accepting terms
 	 And I fill in surname Owen
 	 And I select have loan
 	 When I submit form
-	Then I get terms error message
+	Then I get terms error message You must accept the terms and conditions
 

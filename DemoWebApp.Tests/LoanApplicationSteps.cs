@@ -64,12 +64,11 @@ namespace DemoWebApp.Tests
             Assert.That(_loanConfirmationPage.FirstName,Is.EqualTo(_firstName));
         }
 
-        [Then(@"I get terms error message")]
-        public void ThenIGetTermsErrorMessage()
+        [Then(@"I get terms error message (.*)")]
+        public void ThenIGetTermsErrorMessage(string expected)
         {
-            IWebElement element = _driver.FindElement(By.CssSelector("div.validation-summary-errors"));
-            var result = element.Text;
-            Assert.That(result, Is.EqualTo("You must accept the terms and conditions"));
+            var result = _loanApplicationPage.GetErrorMessage();
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [AfterScenario]

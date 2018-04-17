@@ -57,6 +57,11 @@ namespace DemoWebApp.Tests
 
         }
 
+        public string GetErrorMessage()
+        {
+            return  _driver.FindElement(By.CssSelector("div.validation-summary-errors")).Text;
+        }
+
         public LoanConfirmationPage Submit()
         {
             _driver.FindElement(By.CssSelector(".btn.btn-primary")).Click();
